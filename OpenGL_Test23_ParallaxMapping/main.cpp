@@ -92,9 +92,12 @@ int main()
 
     // load textures
     // -------------
-    unsigned int diffuseMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/bricks2.jpg");       //漫反射贴图
-    unsigned int normalMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/bricks2_normal.jpg"); //法线贴图
-    unsigned int heightMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/bricks2_disp.jpg");   //视差贴图/高度贴图
+//    unsigned int diffuseMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/bricks2.jpg");       //漫反射贴图
+//    unsigned int normalMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/bricks2_normal.jpg"); //法线贴图
+//    unsigned int heightMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/bricks2_disp.jpg");   //位移贴图/视差贴图/高度贴图
+    unsigned int diffuseMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/wood.png");       //漫反射贴图
+    unsigned int normalMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/toy_box_normal.png"); //法线贴图
+    unsigned int heightMap = loadTexture("/Users/haoxiangliang/Desktop/未命名文件夹/toy_box_disp.png");   //位移贴图/视差贴图/高度贴图
 
     // shader configuration
     // --------------------
@@ -280,12 +283,12 @@ void processInput(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS){
         camera.ProcessKeyboard(RIGHT, deltaTime);
     }
-    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS && !pressStopRotate)
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !pressStopRotate)
     {
         stopRotate = !stopRotate;
         pressStopRotate = true;
     }
-    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_RELEASE)
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE)
     {
         pressStopRotate = false;
     }

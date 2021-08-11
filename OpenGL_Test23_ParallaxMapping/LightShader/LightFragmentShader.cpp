@@ -15,6 +15,13 @@ uniform sampler2D depthMap;
 
 uniform float heightScale;
 
+//vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
+//{
+//    float height =  texture(depthMap, texCoords).r;
+//    vec2 p = viewDir.xy / viewDir.z * (height * heightScale);
+//    return texCoords - p;
+//}
+
 vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
 {
     // number of depth layers
@@ -26,11 +33,11 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
     // the amount to shift the texture coordinates per layer (from vector P)
     vec2 P = viewDir.xy * heightScale;
     vec2 deltaTexCoords = P / numLayers;
-    
+
     // get initial values
     vec2  currentTexCoords     = texCoords;
     float currentDepthMapValue = texture(depthMap, currentTexCoords).r;
-      
+
     while(currentLayerDepth < currentDepthMapValue)
     {
         // shift texture coordinates along direction of P
